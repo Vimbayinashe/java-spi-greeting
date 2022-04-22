@@ -7,7 +7,7 @@ import java.util.ServiceLoader;
 
 public class Main {
 
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException {
 
         ServiceLoader<Greeting> serviceLoader = ServiceLoader.load(Greeting.class); //classes that implement Greeting interface
 
@@ -27,6 +27,19 @@ public class Main {
 
             System.out.println("------------------------------");
         }
+
+        // Testing Reflections:
+        Test test = new Test();
+
+        var fields = Test.class.getDeclaredFields();
+        for (var field : fields ) {
+            System.out.println(field.getName());
+            field.setAccessible(true);
+            field.set(test, "a new value");
+            System.out.println(field);
+        }
+
+        System.out.println(test.getTest());
 
         // Alt 2: Lazy Loading
 //        var greeting = serviceLoader.stream()
