@@ -12,6 +12,7 @@ public class SwedishGreeting implements Greeting {
     }
 
     @Override
+    @Address("annotation on a method")
     public String greet() {
         return "Hej!";
     }
