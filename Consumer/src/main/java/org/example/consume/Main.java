@@ -36,7 +36,6 @@ public class Main {
             System.out.println(field.getName());
             field.setAccessible(true);
             field.set(test, "a new value");
-            System.out.println(field);
         }
 
         System.out.println(test.getTest());
